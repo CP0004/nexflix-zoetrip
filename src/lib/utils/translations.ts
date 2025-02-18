@@ -1,5 +1,6 @@
 const translations: { [key: string]: string } = {
-	hello: 'مرحبا',
+	'Click me': 'اضغط هنا',
+	Hello: 'مرحبا'
 };
 
 export { translations };

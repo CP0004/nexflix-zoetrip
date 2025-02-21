@@ -3,8 +3,6 @@
 	import { trans } from '$lib/stores/i18n';
 	
 	let { data } = $props();
-
-	console.log('Page', data);
 </script>
 
 <Button>{$trans(data.config.lang, 'Click me')}</Button>

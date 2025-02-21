@@ -43,7 +43,7 @@
 			class={cn(
 				'flex w-full items-center gap-4 rounded-md p-3 transition-colors hover:bg-accent',
 				'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-				'ltr:flex-row rtl:flex-row-reverse'
+				'flex-row'
 			)}
 		>
 			<Menu class="h-6 w-6" />

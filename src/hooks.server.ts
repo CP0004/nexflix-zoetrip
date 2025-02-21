@@ -23,8 +23,3 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	return await getResponse();
 };
-
-// // get ip address client
-// const responseIp = await event.fetch('https://api.ipify.org?format=json');
-// const resultIp = await responseIp.json();
-// event.locals.ip = resultIp.ip;

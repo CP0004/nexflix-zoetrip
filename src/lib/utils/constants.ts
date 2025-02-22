@@ -14,10 +14,10 @@ const DEFAULT_LANG: string = 'ar'; // ar or en
 
 const NAV_ITEMS: NavItem[] = [
 	{ icon: Home, label: 'Home', href: '/' },
-	{ icon: Clapperboard, label: 'Movies', href: '/movie' },
-	{ icon: Monitor, label: 'TV', href: '/tv' },
+	{ icon: Clapperboard, label: 'Movie', href: '/movie' },
+	{ icon: Monitor, label: 'Tv', href: '/tv' },
 	{ icon: Radio, label: 'Live', href: '/live' },
-	{ icon: UsersRound, label: 'Actors', href: '/person' },
+	{ icon: UsersRound, label: 'Person', href: '/person' },
 	{ icon: Search, label: 'Search', href: '/search' }
 ];
 

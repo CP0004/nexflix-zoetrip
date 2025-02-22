@@ -1,9 +1,5 @@
 <script lang="ts">
 	import { Heart, MessageCircle } from 'lucide-svelte';
-	import { trans } from '$lib/stores/i18n';
-	import { getAppConfig } from '$lib/stores/app';
-
-	const appConfig = getAppConfig();
 </script>
 
 <nav

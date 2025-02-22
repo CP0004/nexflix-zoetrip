@@ -1,17 +1,15 @@
 const translations: { [key: string]: string } = {
 	Nexflix: 'نيكسفليكس',
-	Movies: 'الأفلام',
-	TV: 'التلفزيون',
+	Movie: 'الأفلام',
+	Tv: 'التلفزيون',
 	Live: 'مباشر',
-	Actors: 'المملثين',
+	movie: 'الأفلام',
+	Person: 'المملثين',
+	tv: 'التلفزيون',
+	live: 'مباشر',
+	person: 'المملثين',
 	Home: 'الرئيسية',
 	Search: 'البحث',
-	Explore: 'استكشاف',
-	Reels: 'ريلز',
-	Messages: 'الرسائل',
-	Notifications: 'الإشعارات',
-	Create: 'إنشاء',
-	Profile: 'الملف الشخصي',
 	More: 'المزيد'
 };
 

@@ -18,8 +18,8 @@
 	)}
 >
 	<div class="p-4 lg:p-6">
-		<span class="hidden text-xl font-semibold lg:block">{$trans(appConfig.lang, 'Zoetrip Movies')}</span>
-		<span class="text-xl font-semibold lg:hidden">Ig</span>
+		<img src="/logo_1024x277.png" alt="logo" class="hidden w-2/4 lg:block" />
+		<img src="/logo.png" alt="logo" class="h-8 w-8 lg:hidden" />
 	</div>
 
 	<div class={cn('flex flex-1 flex-col gap-2 p-3', 'ltr:items-start rtl:items-end')}>

@@ -1,5 +1,5 @@
 const translations: { [key: string]: string } = {
-	'Zoetrip Movies': 'زويتريب موفيز',
+	Nexflix: 'نيكسفليكس',
 	Movies: 'الأفلام',
 	TV: 'التلفزيون',
 	Live: 'مباشر',

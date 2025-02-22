@@ -18,7 +18,7 @@
 	)}
 >
 	<div class="p-4 lg:p-6">
-		<span class="hidden text-xl font-semibold lg:block">{$trans(appConfig.lang, 'Instagram')}</span>
+		<span class="hidden text-xl font-semibold lg:block">{$trans(appConfig.lang, 'Zoetrip Movies')}</span>
 		<span class="text-xl font-semibold lg:hidden">Ig</span>
 	</div>
 

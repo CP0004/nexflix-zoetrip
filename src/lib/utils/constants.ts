@@ -6,7 +6,10 @@ import {
 	MessageCircle,
 	Heart,
 	PlusSquare,
-	User
+	Clapperboard,
+	Monitor,
+	Radio,
+	UsersRound
 } from 'lucide-svelte';
 import type { NavItem } from '$lib/types';
 
@@ -16,14 +19,11 @@ const DEFAULT_LANG: string = 'ar';
 
 const NAV_ITEMS: NavItem[] = [
 	{ icon: Home, label: 'Home', href: '/' },
-	{ icon: Search, label: 'Search', href: '/search' },
-	{ icon: Compass, label: 'Explore', href: '/explore' },
-	{ icon: Video, label: 'Reels', href: '/reels' },
-	{ icon: MessageCircle, label: 'Messages', href: '/messages' },
-	{ icon: Heart, label: 'Notifications', href: '/notifications' },
-	{ icon: PlusSquare, label: 'Create', href: '/create' },
-	{ icon: User, label: 'Profile', href: '/profile' }
+	{ icon: Clapperboard, label: 'Movies', href: '/movie' },
+	{ icon: Monitor, label: 'TV', href: '/tv' },
+	{ icon: Radio, label: 'Live', href: '/live' },
+	{ icon: UsersRound, label: 'Actors', href: '/person' },
+	{ icon: Search, label: 'Search', href: '/search' }
 ];
 
 export { DEFAULT_THEME, DEFAULT_LANG, NAV_ITEMS };
-    

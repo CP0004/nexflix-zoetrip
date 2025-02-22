@@ -1,11 +1,6 @@
 import {
 	Home,
 	Search,
-	Compass,
-	Video,
-	MessageCircle,
-	Heart,
-	PlusSquare,
 	Clapperboard,
 	Monitor,
 	Radio,
@@ -13,9 +8,9 @@ import {
 } from 'lucide-svelte';
 import type { NavItem } from '$lib/types';
 
-const DEFAULT_THEME: string = 'light';
+const DEFAULT_THEME: string = 'dark'; // light or dark
 
-const DEFAULT_LANG: string = 'ar';
+const DEFAULT_LANG: string = 'ar'; // ar or en
 
 const NAV_ITEMS: NavItem[] = [
 	{ icon: Home, label: 'Home', href: '/' },

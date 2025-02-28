@@ -23,7 +23,7 @@
 <div>
 	{#each data.popularData as { category, data: categoryData }}
 		<section>
-			<h2 class="text-2xl font-bold mb-4 capitalize">
+			<h2 class="text-2xl font-bold mt-4 mb-2 capitalize">
 				{$trans(data.config.lang, `${category}`)}
 			</h2>
 

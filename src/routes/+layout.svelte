@@ -21,7 +21,7 @@
 			'rtl:md:mr-[72px] rtl:lg:mr-[245px] ltr:md:ml-[72px] ltr:lg:ml-[245px]'
 		)}
 	>
-		<div class="mx-auto max-w-6xl p-4">
+		<div class="mx-auto p-2 md:p-4">
 			{@render children()}
 		</div>
 	</main>

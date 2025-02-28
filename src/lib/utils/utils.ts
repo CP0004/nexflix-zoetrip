@@ -12,3 +12,9 @@ export const getIpInfo = async (): Promise<Info> => {
 	const ipInfoData: Info = await resIpInfo.json();
 	return ipInfoData;
 };
+
+// convert text to slug plus support for arabic and english
+export const slugify = (text: string): string => {
+	if (!text) return '-';
+	return text.toLowerCase().replace(/ /g, '-');
+};

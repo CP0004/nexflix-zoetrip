@@ -1,12 +1,5 @@
-import {
-	Home,
-	Search,
-	Clapperboard,
-	Monitor,
-	Radio,
-	UsersRound
-} from 'lucide-svelte';
-import type { NavItem } from '$lib/types';
+import { Home, Search, Clapperboard, Monitor, Radio, UsersRound } from 'lucide-svelte';
+import type { NavItem, SortBy } from '$lib/types';
 
 const DEFAULT_THEME: string = 'dark'; // light or dark
 
@@ -21,4 +14,19 @@ const NAV_ITEMS: NavItem[] = [
 	{ icon: Search, label: 'Search', href: '/search' }
 ];
 
-export { DEFAULT_THEME, DEFAULT_LANG, NAV_ITEMS };
+const SORT_BY_OPTIONS: SortBy[] = [
+	'original_title.asc',
+	'original_title.desc',
+	'popularity.asc',
+	'popularity.desc',
+	'revenue.asc',
+	'revenue.desc',
+	'primary_release_date.asc',
+	'primary_release_date.desc',
+	'vote_average.asc',
+	'vote_average.desc',
+	'vote_count.asc',
+	'vote_count.desc'
+];
+
+export { DEFAULT_THEME, DEFAULT_LANG, NAV_ITEMS, SORT_BY_OPTIONS };

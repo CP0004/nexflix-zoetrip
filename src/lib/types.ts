@@ -70,11 +70,11 @@ interface PersonListItem {
 	known_for: (MovieListItem | TVShowListItem)[];
 }
 
-interface MediaType {
-	movie: 'popular' | 'top_rated' | 'now_playing' | 'upcoming';
-	tv: 'popular' | 'top_rated' | 'airing_today' | 'on_the_air';
-	person: 'popular';
-}
+// interface MediaType {
+// 	movie: 'popular' | 'top_rated' | 'now_playing' | 'upcoming';
+// 	tv: 'popular' | 'top_rated' | 'airing_today' | 'on_the_air';
+// 	person: 'popular';
+// }
 
 type SortBy =
 	| 'original_title.asc'
@@ -238,10 +238,32 @@ interface PersonDetails {
 	profile_path: string | null;
 }
 
+type MediaType = 'movie' | 'tv' | 'person' | 'all' | 'live';
+
+interface MultipleMedia {
+	id: number;
+	title: string;
+	poster_path: string | null;
+	backdrop_path: string | null;
+	media_type: MediaType;
+	popularity: number;
+	vote_average: number;
+	adult: boolean;
+}
+
+interface MultipleMediaResponse {
+	page: number;
+	results: MultipleMedia[];
+	total_pages: number;
+	total_results: number;
+}
+
 export type {
 	Config,
 	Info,
 	NavItem,
+	MultipleMediaResponse,
+	MultipleMedia,
 	TMDBResponse,
 	MovieListItem,
 	TVShowListItem,

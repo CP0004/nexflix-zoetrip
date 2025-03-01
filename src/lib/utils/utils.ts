@@ -18,3 +18,6 @@ export const slugify = (text: string): string => {
 	if (!text) return '-';
 	return text.toLowerCase().replace(/ /g, '-');
 };
+
+export const getImageUrl = (path: string) =>
+	path ? `${import.meta.env.VITE_IMAGE_URL}${path}` : '';

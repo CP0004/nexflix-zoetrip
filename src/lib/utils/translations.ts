@@ -24,7 +24,15 @@ const translations: { [key: string]: string } = {
 		'خطأ في الفئة. يجب أن تكون واحدة من: الأفلام, التلفزيون, المملثين',
 	'Failed to fetch data from TMDB': 'فشل جلب البيانات من TMDB',
 	'Error fetching from TMDB': 'خطأ عند جلب البيانات من TMDB',
-	'Invalid sort_by. Must be one of:': 'خطأ في sort_by. يجب أن تكون واحدة من:'
+	'Invalid sort_by. Must be one of:': 'خطأ في sort_by. يجب أن تكون واحدة من:',
+	'Rating': 'التقييم',
+	'Play': 'تشغيل',
+	'More Info': 'المزيد',
+	'Trending Now': 'الأكثر شهرة',
+	'Trending': 'الأكثر شهرة',
+	'Popular': 'الأكثر شهرة',
+	'Top Rated': 'الأكثر شهرة',
+	'Now Playing': 'الأكثر شهرة',
 };
 
 export { translations };

@@ -1,5 +1,5 @@
 import { Home, Search, Clapperboard, Monitor, Radio, UsersRound } from 'lucide-svelte';
-import type { NavItem, SortBy } from '$lib/types';
+import type { MediaType, NavItem, SortBy } from '$lib/types';
 
 const DEFAULT_THEME: string = 'dark'; // light or dark
 
@@ -29,4 +29,6 @@ const SORT_BY_OPTIONS: SortBy[] = [
 	'vote_count.desc'
 ];
 
-export { DEFAULT_THEME, DEFAULT_LANG, NAV_ITEMS, SORT_BY_OPTIONS };
+const MEDIA_TYPE: MediaType[] = ['movie', 'tv', 'person', 'all', 'live'];
+
+export { DEFAULT_THEME, DEFAULT_LANG, NAV_ITEMS, SORT_BY_OPTIONS, MEDIA_TYPE };

@@ -1,102 +1,67 @@
 <script lang="ts">
-	import {
-		Card,
-		CardContent,
-		CardDescription,
-		CardHeader,
-		CardTitle
-	} from '$lib/components/ui/card';
-	import { Avatar, AvatarImage, AvatarFallback } from '$lib/components/ui/avatar';
-	import { Badge } from '$lib/components/ui/badge';
 	import { ScrollArea } from '$lib/components/ui/scroll-area';
+	import { CardMultipleMediaComp } from '$lib';
+	import { Button } from '$lib/components/ui/button';
+	import { PlayIcon, InfoIcon } from 'lucide-svelte';
 	import { trans } from '$lib/stores/i18n';
-	import { slugify } from '$lib/utils/utils';
 
 	let { data } = $props();
 
-	// Helper function to get image URL
-	const getImageUrl = (path: string) => (path ? `https://image.tmdb.org/t/p/w500${path}` : '');
+	const trending = data.trending.results;
 
-	// Helper function to format date
-	const formatDate = (date: string) => (date ? new Date(date).toLocaleDateString() : '');
+	const highestRated = $derived(() => {
+		if (!trending || trending.length === 0) return null;
+		return [...trending].sort((a, b) => b.vote_average - a.vote_average)[0];
+	});
 </script>
 
-<div>
-	{#each data.popularData as { category, data: categoryData }}
-		<section>
-			<h2 class="text-2xl font-bold mt-4 mb-2 capitalize">
-				{$trans(data.config.lang, `${category}`)}
-			</h2>
+{#if highestRated()}
+	<div class="relative w-full h-[70vh] overflow-hidden rounded-md">
+		<div
+			class="absolute inset-0 bg-cover bg-center"
+			style="background-image: url({import.meta.env.VITE_IMAGE_URL}/{highestRated()
+				?.backdrop_path || highestRated()?.poster_path})"
+		>
+			<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+		</div>
 
-			<ScrollArea
-				dir={data.config.lang === 'ar' ? 'rtl' : 'ltr'}
-				orientation="horizontal"
-				class="w-full whitespace-nowrap rounded-md border"
-			>
-				<div class="flex gap-4 p-4">
-					{#each categoryData.results as item}
-						<a href={`/details/${category}/${slugify(item.title || item.name)}?id=${item.id}`}>
-							<Card class="w-[250px] shrink-0">
-								<CardHeader>
-									<CardTitle class="truncate py-1">
-										{item.title || item.name}
-									</CardTitle>
-									{#if category !== 'person'}
-										<CardDescription>
-											{formatDate(item.release_date || item.first_air_date || '-')}
-										</CardDescription>
-									{/if}
-								</CardHeader>
-								<CardContent>
-									{#if category === 'person'}
-										<Avatar class="w-full h-[300px] rounded-md">
-											<AvatarImage
-												src={getImageUrl(item.profile_path)}
-												alt={item.name}
-												class="object-cover"
-											/>
-											<AvatarFallback>{item.name[0]}</AvatarFallback>
-										</Avatar>
-										<div class="mt-2">
-											<Badge variant="secondary">
-												{item.known_for_department}
-											</Badge>
-										</div>
-									{:else}
-										<div class="relative aspect-[16/9]">
-											<img
-												loading="lazy"
-												src={getImageUrl(item.backdrop_path)}
-												alt={item.title || item.name}
-												onerror={(e) => {
-													if (e.target instanceof HTMLImageElement) {
-														e.target.src = getImageUrl(item.poster_path);
-														// if poster_path is also not available or error, show a default image
-														if (
-															item.poster_path === null ||
-															e.target.src === '' ||
-															e.target.src === null ||
-															e.target.src === undefined
-														) {
-															e.target.src = 'https://dummyimage.com/300';
-														}
-													}
-												}}
-												class="rounded-md object-cover w-full h-full"
-											/>
-											{#if item.vote_average}
-												<Badge variant="secondary" class="absolute top-2 right-2">
-													{item.vote_average.toFixed(1)}
-												</Badge>
-											{/if}
-										</div>
-									{/if}
-								</CardContent>
-							</Card>
-						</a>
-					{/each}
-				</div>
-			</ScrollArea>
-		</section>
-	{/each}
+		<div class="relative flex flex-col justify-end h-full p-6 md:p-12 lg:w-2/3 gap-4">
+			<h1 class="text-3xl md:text-5xl font-bold mb-2">
+				{highestRated()?.title || ''}
+				<span class="text-primary font-semibold text-sm">
+					{highestRated()?.vote_average.toFixed(1)}
+					{$trans(data.config.lang, `Rating`)}
+				</span>
+			</h1>
+
+			<div class="flex gap-3">
+				<Button variant="default" class="gap-2">
+					<PlayIcon class="h-4 w-4" />
+					{$trans(data.config.lang, `Play`)}
+				</Button>
+				<Button variant="secondary" class="gap-2">
+					<InfoIcon class="h-4 w-4" />
+					{$trans(data.config.lang, `More Info`)}
+				</Button>
+			</div>
+		</div>
+	</div>
+{/if}
+
+<div class="px-6 py-8 bg-background">
+	<h2 class="text-xl font-semibold mb-4">
+		{$trans(data.config.lang, `Trending Now`)}
+	</h2>
+
+	<ScrollArea
+		dir={data.config?.lang === 'ar' ? 'rtl' : 'ltr'}
+		orientation="horizontal"
+		class="w-full"
+	>
+		<div class="flex gap-4 pb-4">
+			{#each trending as trend}
+				<CardMultipleMediaComp {trend} />
+			{/each}
+		</div>
+	</ScrollArea>
 </div>

@@ -7,21 +7,24 @@
 	const trending = $derived(data.trending.results);
 </script>
 
-<CoverMultipleMediaComp {trending} />
-<div class="px-6 py-8 bg-background">
-	<h2 class="text-xl font-semibold mb-4">
-		{$trans(data.config.lang, `Trending Now`)}
-	</h2>
+<div class="flex flex-col gap-y-4">
+	<CoverMultipleMediaComp {trending} />
 
-	<ScrollArea
-		dir={data.config?.lang === 'ar' ? 'rtl' : 'ltr'}
-		orientation="horizontal"
-		class="w-full"
-	>
-		<div class="flex gap-4 pb-4">
-			{#each trending as trend}
-				<CardMultipleMediaComp {trend} />
-			{/each}
-		</div>
-	</ScrollArea>
+	<div class="p-2">
+		<h2 class="text-xl font-semibold mb-4">
+			{$trans(data.config.lang, `Trending Now`)}
+		</h2>
+
+		<ScrollArea
+			dir={data.config?.lang === 'ar' ? 'rtl' : 'ltr'}
+			orientation="horizontal"
+			class="w-full"
+		>
+			<div class="flex gap-2 pb-4">
+				{#each trending as trend}
+					<CardMultipleMediaComp {trend} />
+				{/each}
+			</div>
+		</ScrollArea>
+	</div>
 </div>

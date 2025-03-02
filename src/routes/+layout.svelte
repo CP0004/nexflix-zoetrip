@@ -17,7 +17,7 @@
 	<main
 		class="min-h-screen bg-background pt-14 pb-16 md:pt-0 md:pb-0 rtl:md:mr-[72px] rtl:lg:mr-[245px] ltr:md:ml-[72px] ltr:lg:ml-[245px]"
 	>
-		<div class="mx-auto p-2 md:p-4">
+		<div class="mx-auto ">
 			{@render children()}
 		</div>
 	</main>

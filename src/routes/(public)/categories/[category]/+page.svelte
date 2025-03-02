@@ -11,7 +11,7 @@
 <div class="flex flex-col gap-y-4">
 	<CoverMultipleMediaComp {trending} />
 
-	<div>
+	<div class="p-2">
 		<h2 class="text-xl font-semibold mb-4">
 			{$trans(data.config.lang, `Trending Now`)}
 		</h2>
@@ -21,7 +21,7 @@
 			orientation="horizontal"
 			class="w-full"
 		>
-			<div class="flex gap-4 pb-4">
+			<div class="flex gap-2 pb-4">
 				{#each trending as trend}
 					<CardMultipleMediaComp {trend} />
 				{/each}
@@ -31,7 +31,7 @@
 
 	{#if genres}
 		{#each genres as genre}
-			<div>
+			<div class="p-2">
 				<h2 class="text-xl font-semibold mb-4">
 					{genre.name_genre}
 				</h2>
@@ -40,7 +40,7 @@
 					orientation="horizontal"
 					class="w-full"
 				>
-					<div class="flex gap-4 pb-4">
+					<div class="flex gap-2 pb-4">
 						{#each genre.results_genre.results as result}
 							<CardMultipleMediaComp trend={result} />
 						{/each}

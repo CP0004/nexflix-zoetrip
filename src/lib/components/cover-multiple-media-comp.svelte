@@ -15,11 +15,14 @@
 	});
 </script>
 
-<div class="relative w-full h-[70vh] overflow-hidden rounded-md">
+<div class="relative w-full h-[50vh] overflow-hidden">
 	<div
 		class="absolute inset-0 bg-cover bg-center"
-		style="background-image: url({import.meta.env.VITE_IMAGE_URL}/{highestRated()?.backdrop_path ||
-			highestRated()?.poster_path})"
+		style="background-image: url({highestRated()?.media_type === 'live'
+			? highestRated()?.backdrop_path
+			: `${import.meta.env.VITE_IMAGE_URL}/${
+					highestRated()?.backdrop_path || highestRated()?.poster_path
+				}`})"
 	>
 		<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
 	</div>
@@ -32,7 +35,6 @@
 				{highestRated()?.vote_average
 					? highestRated()?.vote_average.toFixed(1)
 					: highestRated()?.popularity?.toFixed(1)}
-				
 			</span>
 		</h1>
 
@@ -48,10 +50,6 @@
 			>
 				<PlayIcon class="h-4 w-4" />
 				{$trans(config.lang, `Play`)}
-			</Button>
-			<Button variant="secondary" class="gap-2">
-				<InfoIcon class="h-4 w-4" />
-				{$trans(config.lang, `More Info`)}
 			</Button>
 		</div>
 	</div>

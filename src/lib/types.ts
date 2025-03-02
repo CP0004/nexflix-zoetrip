@@ -269,6 +269,41 @@ interface Genre {
 	name: string;
 }
 
+// IPTV related types
+interface IPTVCredentials {
+	name: string;
+	username: string;
+	password: string;
+	url: string;
+	port: number;
+}
+
+interface IPTVCategory {
+	category_id: string;
+	category_name: string;
+	parent_id: number;
+}
+
+interface IPTVChannel {
+	num: number;
+	name: string;
+	stream_type: string;
+	stream_id: number;
+	stream_icon: string | null;
+	epg_channel_id: string | null;
+	added: string;
+	category_id: string;
+	custom_sid: string;
+	tv_archive: number;
+	direct_source: string;
+	tv_archive_duration: number;
+}
+
+interface IPTVResponse<T> {
+	total: number;
+	results: T[];
+}
+
 export type {
 	Config,
 	Info,
@@ -288,5 +323,9 @@ export type {
 	PersonDetails,
 	ProductionCompany,
 	ProductionCountry,
-	SpokenLanguage
+	SpokenLanguage,
+	IPTVCredentials,
+	IPTVCategory,
+	IPTVChannel,
+	IPTVResponse
 };

@@ -5,20 +5,24 @@ import { MEDIA_TYPE } from '$lib/utils/constants';
 import { getFromCacheOrFetch } from '$lib/utils/cache';
 
 export const GET: RequestHandler = async ({ params, locals }) => {
-	const { category } = params;
+	const { id, category } = params;
+
+	if (!id) {
+		throw error(400, 'Invalid id');
+	}
 
 	if (!MEDIA_TYPE.includes(category as MediaType)) {
 		throw error(400, `Invalid category. Must be one of: ${MEDIA_TYPE.join(', ')}`);
 	}
 
 	try {
-		// Use the cache system for common data
-		const cacheKey = `trending_${category}_${locals.lang}`;
-
+		// Use the cache system for data
+		const cacheKey = `genre_by_${category}_${id}_${locals.lang}`;
+		
 		const responseData = await getFromCacheOrFetch<MultipleMediaResponse>(
 			cacheKey,
 			async () => {
-				const apiUrl = `${import.meta.env.VITE_BASE_URL_TMDB}/trending/${category}/week?language=${locals.lang}`;
+				const apiUrl = `${import.meta.env.VITE_BASE_URL_TMDB}/discover/${category}?include_adult=false&include_video=false&language=${locals.lang}&page=1&with_genres=${id}`;
 
 				const response = await fetch(apiUrl, {
 					headers: {
@@ -37,7 +41,7 @@ export const GET: RequestHandler = async ({ params, locals }) => {
 					title: result.title || result.name,
 					poster_path: result.poster_path || result.profile_path,
 					backdrop_path: result.backdrop_path || result.profile_path,
-					media_type: result.media_type,
+					media_type: result.media_type || category,
 					popularity: result.popularity,
 					adult: result.adult,
 					vote_average: result.vote_average || 0
@@ -50,7 +54,7 @@ export const GET: RequestHandler = async ({ params, locals }) => {
 					total_results: data.total_results
 				} as MultipleMediaResponse;
 			},
-			30 * 60 * 1000 // 30 minutes for the cache (trending data may change more frequently)
+			30 * 60 * 1000 // 30 minutes for the cache
 		);
 
 		return json(responseData);

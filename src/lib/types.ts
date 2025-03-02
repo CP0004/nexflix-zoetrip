@@ -258,12 +258,25 @@ interface MultipleMediaResponse {
 	total_results: number;
 }
 
+interface MultipleMediaGenreResponse {
+	name_genre: string;
+	id_genre: number;
+	results_genre: MultipleMediaResponse;
+}
+
+interface Genre {
+	id: number;
+	name: string;
+}
+
 export type {
 	Config,
 	Info,
 	NavItem,
 	MultipleMediaResponse,
+	MultipleMediaGenreResponse,
 	MultipleMedia,
+	Genre,
 	TMDBResponse,
 	MovieListItem,
 	TVShowListItem,
@@ -273,7 +286,6 @@ export type {
 	MovieDetails,
 	TVShowDetails,
 	PersonDetails,
-	Genre,
 	ProductionCompany,
 	ProductionCountry,
 	SpokenLanguage

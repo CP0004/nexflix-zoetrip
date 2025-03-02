@@ -28,9 +28,9 @@
 
 					{#if trend.popularity}
 						<Badge variant="secondary" class="absolute top-2 right-2">
-							{trend.vote_average.toFixed(1) || trend.popularity.toFixed(1)}
+							{trend.vote_average ? trend.vote_average.toFixed(1) : trend.popularity.toFixed(1)}
 						</Badge>
-					{/if}
+					{/if}	
 				</Avatar>
 			{/if}
 		</CardContent>

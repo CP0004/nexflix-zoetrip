@@ -7,10 +7,10 @@ const DEFAULT_LANG: string = 'ar'; // ar or en
 
 const NAV_ITEMS: NavItem[] = [
 	{ icon: Home, label: 'Home', href: '/' },
-	{ icon: Clapperboard, label: 'Movie', href: '/movie' },
-	{ icon: Monitor, label: 'Tv', href: '/tv' },
-	{ icon: Radio, label: 'Live', href: '/live' },
-	{ icon: UsersRound, label: 'Person', href: '/person' },
+	{ icon: Clapperboard, label: 'Movie', href: '/categories/movie' },
+	{ icon: Monitor, label: 'Tv', href: '/categories/tv' },
+	{ icon: Radio, label: 'Live', href: '/categories/live' },
+	{ icon: UsersRound, label: 'Person', href: '/categories/person' },
 	{ icon: Search, label: 'Search', href: '/search' }
 ];
 

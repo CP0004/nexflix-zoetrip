@@ -27,9 +27,12 @@
 	<div class="relative flex flex-col justify-end h-full p-6 md:p-12 lg:w-2/3 gap-4">
 		<h1 class="text-3xl md:text-5xl font-bold mb-2">
 			{highestRated()?.title || ''}
-			<span class="text-primary font-semibold text-sm">
-				{highestRated()?.vote_average.toFixed(1)}
+			<span class="text-primary font-semibold text-sm text-start">
 				{$trans(config.lang, `Rating`)}
+				{highestRated()?.vote_average
+					? highestRated()?.vote_average.toFixed(1)
+					: highestRated()?.popularity?.toFixed(1)}
+				
 			</span>
 		</h1>
 

@@ -4,7 +4,7 @@
 	import { trans } from '$lib/stores/i18n';
 
 	let { data } = $props();
-	const trending = data.trending.results;
+	const trending = $derived(data.trending.results);
 </script>
 
 <CoverMultipleMediaComp {trending} />
